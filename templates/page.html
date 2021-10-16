@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Prediction</title>
+    <style>
+        input{
+            size: 100rem;
+        }
+    </style>
+</head>
+<body >
+    <center>
+    <h1>Fake news Pridiction:</h1>
+    <form action="/predict" method="post">
+        <textarea name="news" id="" cols="60" rows="10" placeholder="ENTER THE TITLE FO THE NEWS"></textarea>
+        <br>
+        <input   type="submit" value="Predict"></button>
+    </form>
+    {% if not result %}
+    <h3>Result : </h3>
+    {% endif %}
+   {% if request %}
+   <h3>Result : {{result}}</h3>
+   {% endif %}
+
+</center>
+</body>
+</html>
