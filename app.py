@@ -1,16 +1,19 @@
 from flask import Flask,render_template,request
-import Fakenews as fk
+# import Fakenews as fk
+# from joblib import load
+import joblib
 app = Flask(__name__)
-
-@app.route('/')
+# model = load('./model.joblib')
+model = joblib.load('fakenewsmodel.pkl')
+@app.route('/',methods=['GET','POST'])
 def index():
-    return render_template('page.html')
-
-@app.route('/predict',methods=['GET','POST'])
-def predict():
-    cleandata = request.form['news'].rstrip()
+    if request.method == 'GET':
+        return render_template('page.html')
+    else:
+        cleandata = request.form['news'].rstrip()
     # print(cleandata)
-    res = fk.prednews(cleandata)
-    return render_template('page.html',result=res)
+        # res = fk.prednews(cleandata)
+        res = model.predict([cleandata])
+        return render_template('page.html',result=res[0].replace('[','').replace(']',''))
 
 app.run(debug=True)

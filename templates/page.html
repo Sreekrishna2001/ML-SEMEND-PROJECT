@@ -9,23 +9,52 @@
         input{
             size: 100rem;
         }
+        body{
+            background: #c31432;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+color:black;
+background-image: url("https://media.istockphoto.com/photos/fake-news-false-information-concepts-picture-id1224856056?k=20&m=1224856056&s=612x612&w=0&h=ewhaho23XNOY6ju4kkxWFxIgwJurBvu-Rz8bqPKRjww=");
+background-repeat: no-repeat;
+background-size: cover;
+  
+}
+        textarea{
+            border-radius: 4px;
+        }
+        button{
+            border-radius: 8px;
+            background-color: black;
+            color: white;
+
+        }
+
+        div{
+            font-size: larger;
+            font-weight: bold;;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            width: 500px;
+            margin: auto;   
+            /* margin-top: 120px; */
+            color: white
+            
+        }
     </style>
 </head>
-<body >
-    <center>
+<body>
+    <div>
     <h1>Fake news Pridiction:</h1>
-    <form action="/predict" method="post">
+    <form action="/" method="post">
         <textarea name="news" id="" cols="60" rows="10" placeholder="ENTER THE TITLE FO THE NEWS"></textarea>
         <br>
-        <input   type="submit" value="Predict"></button>
+        <button type="submit">Predict</button>
     </form>
     {% if not result %}
     <h3>Result : </h3>
     {% endif %}
-   {% if request %}
-   <h3>Result : {{result}}</h3>
+   {% if result %}
+   <h3>The News is '{{result}}' with 0.8569 Acurracy</h3>
    {% endif %}
-
-</center>
+</div>
 </body>
 </html>
