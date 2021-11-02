@@ -16,4 +16,5 @@ def index():
         res = model.predict([cleandata])
         return render_template('page.html',result=res[0].replace('[','').replace(']',''))
 
-app.run(debug=True)
+if   __name__==  '__main__':
+    app.run()
